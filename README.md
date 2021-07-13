@@ -1,1 +1,1 @@
-# lims_setup
+# lims-setup
