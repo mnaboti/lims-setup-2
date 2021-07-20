@@ -29,10 +29,21 @@ pipeline {
     }
 
     stage('Compress application and ship to production site') {
-      steps {
-        echo 'Compressing iBLIS and shipping to facility'
-        sh '''[ -f $WORKSPACE/iBLIS.tar.gz] && echo "file already exists." ||       tar -czvf iBLIS.tar.gz $WORKSPACE/iBLIS
+      parallel {
+        stage('Compress application and ship to production site') {
+          steps {
+            echo 'Compressing iBLIS and shipping to facility'
+            sh '''[ -f $WORKSPACE/iBLIS.tar.gz] && echo "file already exists." ||       tar -czvf iBLIS.tar.gz $WORKSPACE/iBLIS
  '''
+          }
+        }
+
+        stage('') {
+          steps {
+            echo 'Shipping to facility...'
+          }
+        }
+
       }
     }
 
