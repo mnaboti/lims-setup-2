@@ -19,37 +19,20 @@ pipeline {
           }
         }
 
-        stage('Checkout to development_1.0') {
-          steps {
-            sh '      cd $WORKSPACE/iBLIS|git checkout -f   master'
-          }
-        }
-
         stage('copying .example files to .php') {
           steps {
             sh '[ -f "$WORKSPACE/iBLIS/app/config/kblis.php" ] && echo "kblis.php already exists." || cp $WORKSPACE/iBLIS/app/config/database.php.example $WORKSPACE/iBLIS/app/config/kblis.php |[ -f "$WORKSPACE/iBLIS/app/config/kblis.php" ] && echo "kblis.php already exists." || cp $WORKSPACE/iBLIS/app/config/database.php.example $WORKSPACE/iBLIS/app/config/database.php | [ -f "$WORKSPACE/iBLIS/app/config/app.php" ] && echo "app.php already exists." || cp $WORKSPACE/iBLIS/app/config/app.php.example $WORKSPACE/iBLIS/app/config/app.php'
           }
         }
 
-        stage('Fetching composer installation file') {
-          steps {
-            sh '[ -f "$WORKSPACE/iBLIS/composer.phar" ] && echo "composer.phar already exists." || curl https://github.com/DoxDevOps/lims-setup/blob/master/composer.phar > $WORKSPACE/iBLIS/composer.phar'
-          }
-        }
-
-      }
-    }
-
-    stage('Fetching php and dependencies') {
-      steps {
-        echo 'Fetch php and dependencies  located in debs folder'
-        sh '[ -d "$WORKSPACE/iBLIS/debs" ] && echo "debs already exists." || curl https://github.com/DoxDevOps/lims-setup/tree/master/debs > $WORKSPACE/iBLIS/debs'
       }
     }
 
     stage('Compress application and ship to production site') {
       steps {
         echo 'Compressing iBLIS and shipping to facility'
+        sh '''[ -f "$WORKSPACE/iBLIS.tar.gz] && echo "file already exists."||       tar -czvf iBLIS.tar.gz $WORKSPACE/iBLIS
+ '''
       }
     }
 
