@@ -4,6 +4,8 @@ import platform
 import subprocess
 import os
 import tarfile
+import pwd
+import grp
 from fabric import Connection
 
 
