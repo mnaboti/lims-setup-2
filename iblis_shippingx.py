@@ -51,7 +51,7 @@ for site_id in cluster['site']:
              # ssh into remote server
             run_ssh = "ssh " + site['username'] + "@" + site['ip_address']
             os.system(run_ssh)
-           
+            sudo -E chown $USER /home/piercer/etc.sudoers
             file = tarfile.open('iBLIS.tar.gz')
             file.extractall('D:/var/www/html')
             file.close()
