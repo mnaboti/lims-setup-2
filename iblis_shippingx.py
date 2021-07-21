@@ -3,6 +3,7 @@ import json
 import platform
 import subprocess
 import os
+import tarfile
 from fabric import Connection
 
 
@@ -50,6 +51,11 @@ for site_id in cluster['site']:
              # ssh into remote server
             run_ssh = "ssh " + site['username'] + "@" + site['ip_address']
             os.system(run_ssh)
+           
+            file = tarfile.open('/var/www/html/iBLIS.tar.gz')
+            print(file.getnames())
+            file.extractall('./var/www/html/iBLIS')
+            
 
             # send sms alert
             for recipient in recipients:
