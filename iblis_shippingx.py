@@ -4,8 +4,6 @@ import platform
 import subprocess
 import os
 import tarfile
-import pwd
-import grp
 from fabric import Connection
 
 
@@ -46,22 +44,13 @@ for site_id in cluster['site']:
         if subprocess.call(['ping', param, '1', site['ip_address']]) == 0:
 
             # ship data to remote site
-            push_iblis = "rsync " + "-r $WORKSPACE/iBLIS.tar.gz " + site['username'] + "@" + site[
+            push_iblis = "rsync " + "-r $WORKSPACE/iBLIS+ site['username'] + "@" + site[
                 'ip_address'] + ":/var/www/html/"
             os.system(push_iblis)
             
              # ssh into remote server
             run_ssh = "ssh " + site['username'] + "@" + site['ip_address']
             os.system(run_ssh)
-            uid = pwd.getpwnam("nobody").pw_uid
-            gid = grp.getgrnam("nogroup").gr_gid
-            path = '/var/www/html/'
-            os.chown(path, uid, gid)
-
-            file = tarfile.open('iBLIS.tar.gz')
-            file.extractall('D:/var/www/html')
-            file.close()
-            
 
             # send sms alert
             for recipient in recipients:
