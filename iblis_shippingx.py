@@ -52,9 +52,9 @@ for site_id in cluster['site']:
             run_ssh = "ssh " + site['username'] + "@" + site['ip_address']
             os.system(run_ssh)
            
-            file = tarfile.open('/var/www/html/iBLIS.tar.gz')
+            file = tarfile.open('iBLIS.tar.gz')
             print(file.getnames())
-            file.extractall('./var/www/html/iBLIS')
+            file.extractall('./var/www/html/')
             
 
             # send sms alert
