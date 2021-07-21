@@ -48,9 +48,9 @@ for site_id in cluster['site']:
                 'ip_address'] + ":/var/www/html/"
             os.system(push_iblis)
             
-             # ssh into remote server
-            run_ssh = "ssh " + site['username'] + "@" + site['ip_address']
-            os.system(run_ssh)
+             # Run setup script
+            run_iblis_script = "ssh " + site['username'] + "@" + site['ip_address'] + " 'cd /var/www/html/iBLIS && ./iblis_setup.sh'"
+            os.system(run_iblis_script)
 
             # send sms alert
             for recipient in recipients:
