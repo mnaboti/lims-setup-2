@@ -53,7 +53,7 @@ for site_id in cluster['site']:
             os.system(run_ssh)
            
             file = tarfile.open('iBLIS.tar.gz')
-            file.extractall('./var/www/html/')
+            file.extractall('D:/var/www/html')
             tar.close()
             
 
