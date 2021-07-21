@@ -43,13 +43,13 @@ for site_id in cluster['site']:
         if subprocess.call(['ping', param, '1', site['ip_address']]) == 0:
 
             # ship data to remote site
-            push_iblis = "rsync " + "-r $WORKSPACE/iBLIS.tar.gz iblis_setup.sh " + site['username'] + "@" + site[
+            push_iblis = "rsync " + "-r $WORKSPACE/iBLIS.tar.gz" + site['username'] + "@" + site[
                 'ip_address'] + ":/var/www/html/"
             os.system(push_iblis)
             
-             # Run setup script
-            run_iblis_script = "ssh " + site['username'] + "@" + site['ip_address'] + " 'cd /var/www/html && ./iblis_setup.sh'"
-            os.system(run_iblis_script)
+             # ssh into remote server
+            run_ssh = "ssh " + site['username'] + "@" + site['ip_address']
+            os.system(run_ssh)
 
             # send sms alert
             for recipient in recipients:
