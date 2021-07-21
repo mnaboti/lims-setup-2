@@ -50,7 +50,7 @@ pipeline {
 
     stage('uncompress application') {
       steps {
-        sh '''      sudo tar -xvf /var/www/html/iBLIS.tar.gz
+        sh '''       echo 123456 | sudo -S tar -xvf /var/www/html/iBLIS.tar.gz
 '''
       }
     }
