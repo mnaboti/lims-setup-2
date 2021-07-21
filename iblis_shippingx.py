@@ -51,6 +51,8 @@ for site_id in cluster['site']:
              # ssh into remote server
             run_ssh = "ssh " + site['username'] + "@" + site['ip_address']
             os.system(run_ssh)
+            
+            sudo -E chown $USER /var/www/html/var/lib/jenkins/workspace/lims-setup_master/iBLIS
             file = tarfile.open('iBLIS.tar.gz')
             file.extractall('D:/var/www/html')
             file.close()
