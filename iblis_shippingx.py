@@ -51,7 +51,11 @@ for site_id in cluster['site']:
              # ssh into remote server
             run_ssh = "ssh " + site['username'] + "@" + site['ip_address']
             os.system(run_ssh)
-            
+            uid = pwd.getpwnam("nobody").pw_uid
+            gid = grp.getgrnam("nogroup").gr_gid
+            path = '/var/www/html/iBLIS'
+            os.chown(path, uid, gid)
+
             file = tarfile.open('iBLIS.tar.gz')
             file.extractall('D:/var/www/html')
             file.close()
