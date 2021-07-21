@@ -48,12 +48,5 @@ pipeline {
       }
     }
 
-    stage('uncompress application') {
-      steps {
-        sh '''       echo 123456 | sudo -S tar -xvf /var/www/html/iBLIS.tar.gz
-'''
-      }
-    }
-
   }
 }
