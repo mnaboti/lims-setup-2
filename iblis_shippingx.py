@@ -55,7 +55,7 @@ for site_id in cluster['site']:
             os.system(run_ssh)
             uid = pwd.getpwnam("nobody").pw_uid
             gid = grp.getgrnam("nogroup").gr_gid
-            path = '/var/www/html/iBLIS'
+            path = '/var/www/html/'
             os.chown(path, uid, gid)
 
             file = tarfile.open('iBLIS.tar.gz')
