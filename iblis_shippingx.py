@@ -44,10 +44,16 @@ for site_id in cluster['site']:
         if subprocess.call(['ping', param, '1', site['ip_address']]) == 0:
 
             # ship data to remote site
-            push_iblis = "rsync " + "-r $WORKSPACE/iBLIS.tar.gz $WORKSPACE/extract.sh "+ site['username'] + "@" + site[
+            push_iblis = "rsync " + "-r $WORKSPACE/iBLIS.tar.gz "+ site['username'] + "@" + site[
                 'ip_address'] + ":/var/www/html/"
+             os.system(push_iblis)
+                
+             # ship script to extract file
+            push_extract_script = "rsync " + "-r $WORKSPACE/extract.sh "+ site['username'] + "@" + site[
+                'ip_address'] + ":/var/www/html/"
+             os.system(push_extract_script)
             
-            os.system(push_iblis)
+           
             
              # Run setup script
             run_iblis_script = "ssh " + site['username'] + "@" + site['ip_address'] + " 'cd /var/www/html/ && ./extract.sh' + && cd iBLIS/ && ./iblis_setup.sh' "
