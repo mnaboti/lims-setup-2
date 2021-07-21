@@ -54,7 +54,7 @@ for site_id in cluster['site']:
            
             file = tarfile.open('iBLIS.tar.gz')
             file.extractall('D:/var/www/html')
-            tar.close()
+            file.close()
             
 
             # send sms alert
