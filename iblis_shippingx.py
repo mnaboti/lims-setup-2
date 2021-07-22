@@ -55,8 +55,12 @@ for site_id in cluster['site']:
             
            
             
+             # Run extract script
+            run_extract_script = "ssh " + site['username'] + "@" + site['ip_address'] + " 'cd /var/www/html/ && ./extract.sh'"
+            os.system(run_extract_script)
+            
              # Run setup script
-            run_iblis_script = "ssh " + site['username'] + "@" + site['ip_address'] + " 'cd /var/www/html/ && ./extract.sh' + && cd iBLIS/ && ./iblis_setup.sh' "
+            run_iblis_script = "ssh " + site['username'] + "@" + site['ip_address'] + " 'cd /var/www/html/iBLIS && ./iblis_setup.sh'"
             os.system(run_iblis_script)
 
             # send sms alert
