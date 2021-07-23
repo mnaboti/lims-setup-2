@@ -25,6 +25,12 @@ pipeline {
           }
         }
 
+        stage('Configuring database.php') {
+          steps {
+            echo 'Adding mysql credentials to database.php'
+          }
+        }
+
       }
     }
 
