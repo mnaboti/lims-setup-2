@@ -25,13 +25,6 @@ pipeline {
           }
         }
 
-        stage('Configuring database.php') {
-          steps {
-            echo 'Adding mysql credentials to database.php'
-            sh 'echo sed -i \'s/username\\:/username\\: root/; s/password\\:/password\\: root/\' $WORKSPACE/iBLIS/app/config/database.php'
-          }
-        }
-
       }
     }
 
