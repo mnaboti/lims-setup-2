@@ -5,7 +5,8 @@ import subprocess
 import os
 import tarfile
 from fabric import Connection
-
+from dotenv import load_dotenv
+load_dotenv()
 
 def get_xi_data(url):
     response = requests.get(url)
