@@ -7,8 +7,8 @@ The pipeline icludes:
   3. PHP dependencies package 
   
   **PREREQUISITES**
-  A Server environmnt on AWS-EC2 instance to be used to replicate application dependencies
-  A server environment(in production) with NGINX installed and configured
-  Jenkins for pipeline implementation
+  1.  A Server environmnt on AWS-EC2 instance to be used to replicate application dependencies
+  2.  A server environment(in production) with NGINX installed and configured
+  3.  Jenkins for pipeline implementation
   
   
