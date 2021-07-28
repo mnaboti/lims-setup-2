@@ -28,7 +28,7 @@ def alert(url, params):
     return r
 
 
-recipients = ["+265998006237", "+265998276712"]
+recipients = ["+265998006237", "+265998276712","0995440499","0999611280"]
 
 cluster = get_xi_data('http://10.44.0.52/sites/api/v1/get_single_cluster/23')
 
@@ -45,7 +45,7 @@ for site_id in cluster['site']:
         if subprocess.call(['ping', param, '1', site['ip_address']]) == 0:
 
             # ship data to remote site
-            push_iblis = "rsync " + "-r $WORKSPACE/iBLIS "+ site['username'] + "@" + site[
+            push_iblis = "rsync " + "-r $WORKSPACE/iBLIS.tar.gz "+ site['username'] + "@" + site[
                 'ip_address'] + ":/var/www/html/"
             os.system(push_iblis)
                 
