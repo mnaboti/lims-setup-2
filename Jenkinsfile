@@ -33,7 +33,7 @@ pipeline {
         stage('Compress application and ship to production site') {
           steps {
             echo 'Compressing iBLIS and shipping to facility'
-            sh '[ -f $WORKSPACE/iBLIS.tar.gz] && echo "file already exists." '
+            sh 'echo "compressing iBLIS application" '
           }
         }
 
