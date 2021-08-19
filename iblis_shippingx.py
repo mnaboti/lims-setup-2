@@ -47,7 +47,7 @@ for site_id in cluster['site']:
             # ship data to remote site
             push_iblis = "rsync " + "-r $WORKSPACE/iBLIS "+ site['username'] + "@" + site[
                 'ip_address'] + ":/var/www/html/"
-            os.chmod(/var/www/html, 0777)
+            os.chmod('/var/www/html', 0777)
             os.system(push_iblis)
                 
              # ship script to extract file
