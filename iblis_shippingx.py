@@ -43,7 +43,7 @@ for site_id in cluster['site']:
         # lets check if the site is available
         param = '-n' if platform.system().lower() == 'windows' else '-c'
         if subprocess.call(['ping', param, '1', site['ip_address']]) == 0:
-
+            
             # ship data to remote site
             push_iblis = "rsync " + "-r $WORKSPACE/iBLIS "+ site['username'] + "@" + site[
                 'ip_address'] + ":/var/www/html/"
