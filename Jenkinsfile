@@ -44,12 +44,12 @@ pipeline {
           }
         }
 
-        stage('error') {
-          steps {
-            echo 'shipping application to facility'
-          }
-        }
+      }
+    }
 
+    stage('Fetching Genexpert') {
+      steps {
+        echo 'Fetching Genexpert driver'
       }
     }
 
