@@ -25,21 +25,14 @@ pipeline {
           }
         }
 
-        stage('Fetching nlims_controller') {
-          steps {
-            echo 'Fetching nlims_controller from github'
-            sh '[ -d "nlims_controller" ] && echo "nlims_controller found, skipping cloning." || git clone https://github.com/HISMalawi/nlims_controller.git'
-          }
-        }
-
       }
     }
 
     stage('Compress application and ship to production site') {
       parallel {
-        stage('Compress application and ship to production site') {
+        stage('Fetching nlims_controller') {
           steps {
-            echo 'Compressing iBLIS and shipping to facility'
+            echo 'Fetching nlims_controller from source code'
             sh 'echo "compressing iBLIS application" '
           }
         }
