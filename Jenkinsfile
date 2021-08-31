@@ -28,7 +28,7 @@ pipeline {
       }
     }
 
-    stage('Compress application and ship to production site') {
+    stage('fetching controller, data syncroniser') {
       parallel {
         stage('Fetching nlims_controller') {
           steps {
