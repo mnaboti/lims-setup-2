@@ -34,6 +34,7 @@ pipeline {
           steps {
             echo 'Fetching nlims_controller from source code'
             sh '[ -d "nlims_controller" ] && echo "nlims_controller found, skipping cloning." || git clone https://github.com/HISMalawi/nlims_controller.git'
+            sh 'cd $WORKSPACE/nlims_controller && git fetch --tags -f'
           }
         }
 
