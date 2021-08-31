@@ -28,6 +28,7 @@ pipeline {
         stage('Fetching nlims_controller') {
           steps {
             echo 'Fetching nlims_controller from github'
+            sh '[ -d "nlims_controller" ] && echo "nlims_controller found, skipping cloning." || git clone https://github.com/HISMalawi/nlims_controller.git'
           }
         }
 
@@ -49,7 +50,7 @@ pipeline {
           }
         }
 
-        stage('') {
+        stage('error') {
           steps {
             echo 'shipping application to facility'
           }
