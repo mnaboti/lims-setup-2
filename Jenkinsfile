@@ -40,6 +40,7 @@ pipeline {
         stage('Fetching nlims_data_synchoniser') {
           steps {
             echo 'Fetching data syncroniser...'
+            sh '[ -d "nlims_data_syncroniser" ] && echo "nlims_data_syncroniser found, skipping cloning." || git clone https://github.com/HISMalawi/nlims_data_syncroniser.git'
           }
         }
 
