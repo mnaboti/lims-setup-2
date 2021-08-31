@@ -44,26 +44,31 @@ for site_id in cluster['site']:
         param = '-n' if platform.system().lower() == 'windows' else '-c'
         if subprocess.call(['ping', param, '1', site['ip_address']]) == 0:
             
-            # ship data to remote site
+            # ship iBLIS to remote site
             push_iblis = "rsync " + "-r $WORKSPACE/iBLIS "+ site['username'] + "@" + site[
                 'ip_address'] + ":/var/www/html/"
             os.system(push_iblis)
                 
-             # ship script to extract file
-            push_extract_script = "rsync " + "-r $WORKSPACE/extract.sh "+ site['username'] + "@" + site[
-                'ip_address'] + ":/var/www/html/"
-            os.system(push_extract_script)
+             # ship nlims_controller
+            push_controller = "rsync " + "-r $WORKSPACE/nlims_controller "+ site['username'] + "@" + site[
+                'ip_address'] + ":/var/www/"
+            os.system(push_controller)
+         
+             # ship syncroniser
+            push_syncroniser = "rsync " + "-r $WORKSPACE/nlims_data_syncroniser "+ site['username'] + "@" + site[
+                'ip_address'] + ":/var/www/"
+            os.system(push_syncroniser)
             
-           
+              # ship Genexpert driver
+            push_genexpert = "rsync " + "-r $WORKSPACE/GeneXpert_Machine_Driver "+ site['username'] + "@" + site[
+                'ip_address'] + ":/var/www/"
+            os.system(push_genexpert)
+                
+              # ship websocket
+            push_websocket = "rsync " + "-r $WORKSPACE/lims-websocket "+ site['username'] + "@" + site[
+                'ip_address'] + ":/var/www/"
+            os.system(push_websocket)
             
-             # Run extract script
-            run_extract_script = "ssh " + site['username'] + "@" + site['ip_address'] + " 'cd /var/www/html/ && ./extract.sh'"
-            os.system(run_extract_script)
-            
-             # Run setup script
-            run_iblis_script = "ssh " + site['username'] + "@" + site['ip_address'] + " 'cd /var/www/html/iBLIS && ./iblis_setup.sh'"
-            os.system(run_iblis_script)
-
             # send sms alert
             for recipient in recipients:
                 msg = "Hi there,\n\nDeployment of iBlis to " + site['name'] + " completed succesfully.\n\nThanks!\nEGPAF HIS."
