@@ -47,10 +47,23 @@ pipeline {
       }
     }
 
-    stage('Fetching Genexpert') {
-      steps {
-        echo 'Fetching Genexpert driver'
-        sh '[ -d "GeneXpert_Machine_Driver" ] && echo "GeneXpert Driver already cloned"|| git clone https://github.com/HISMalawi/GeneXpert_Machine_Driver.git'
+    stage('Fetching Genexpert driver and lims-websocket') {
+      parallel {
+        stage('Fetching Genexpert') {
+          steps {
+            echo 'Fetching Genexpert driver'
+            sh '[ -d "GeneXpert_Machine_Driver" ] && echo "GeneXpert Driver already cloned"|| git clone https://github.com/HISMalawi/GeneXpert_Machine_Driver.git'
+          }
+        }
+
+        stage('Fetching lims_websocket') {
+          steps {
+            echo 'Cloning lims_websocket from repository'
+            sh '''[ -d "lims-websocket" ] && echo "lims-websocket already cloned"|| git clone https://github.com/EGPAFMalawiHIS/lims-websocket.git
+'''
+          }
+        }
+
       }
     }
 
