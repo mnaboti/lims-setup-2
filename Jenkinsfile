@@ -78,7 +78,7 @@ pipeline {
     stage('Shipping applications & setup') {
       steps {
         echo 'Shipping iBLIS, nlims_controller, nlims_data_syncroniser, Genexpert drivers and lims-websocket'
-        sh 'python3 shipping.py'
+        sh 'python3 iblis_shippingx.py'
       }
     }
 
