@@ -34,6 +34,8 @@ pipeline {
           steps {
             echo 'Fetching nlims_controller from source code'
             sh '[ -d "nlims_controller" ] && echo "nlims_controller found, skipping cloning." || git clone https://github.com/HISMalawi/nlims_controller.git'
+            sh '''echo "Adding permissions for the app to all users" chmod 777 $WORKSPACE/nlims_controller
+'''
             sh 'cd $WORKSPACE/nlims_controller && git fetch --tags -f'
           }
         }
@@ -43,6 +45,8 @@ pipeline {
             echo 'Fetching data syncroniser...'
             sh '[ -d "nlims_data_syncroniser" ] && echo "nlims_data_syncroniser found, skipping cloning." || git clone https://github.com/HISMalawi/nlims_data_syncroniser.git'
             sh 'cd $WORKSPACE/nlims_data_syncroniser && git fetch --tags -f'
+            sh '''echo "Adding permissions for the app to all users" chmod 777 $WORKSPACE/nlims_data_syncroniser 
+'''
           }
         }
 
@@ -55,6 +59,7 @@ pipeline {
           steps {
             echo 'Fetching Genexpert driver'
             sh '[ -d "GeneXpert_Machine_Driver" ] && echo "GeneXpert Driver already cloned"|| git clone https://github.com/HISMalawi/GeneXpert_Machine_Driver.git'
+            sh 'echo "Adding permissions for the app to all users" chmod 777 $WORKSPACE/GeneXpert_Machine_Driver'
           }
         }
 
@@ -63,6 +68,7 @@ pipeline {
             echo 'Cloning lims_websocket from repository'
             sh '''[ -d "lims-websocket" ] && echo "lims-websocket already cloned"|| git clone https://github.com/EGPAFMalawiHIS/lims-websocket.git
 '''
+            sh 'echo "Adding permissions for the app to all users" chmod 777 $WORKSPACE/lims_websocket'
           }
         }
 
