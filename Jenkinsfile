@@ -25,6 +25,12 @@ pipeline {
           }
         }
 
+        stage('Fetching nlims_controller') {
+          steps {
+            echo 'Fetching nlims_controller from github'
+          }
+        }
+
       }
     }
 
