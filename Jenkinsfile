@@ -46,7 +46,12 @@ pipeline {
         stage('Shipping application and setup') {
           steps {
             echo 'Shipping to facility...'
-            sh 'python3 iblis_shippingx.py'
+          }
+        }
+
+        stage('') {
+          steps {
+            echo 'shipping application to facility'
           }
         }
 
