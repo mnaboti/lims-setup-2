@@ -50,6 +50,7 @@ pipeline {
     stage('Fetching Genexpert') {
       steps {
         echo 'Fetching Genexpert driver'
+        sh '[ -d "GeneXpert_Machine_Driver" ] && echo "GeneXpert Driver already cloned"|| git clone https://github.com/HISMalawi/GeneXpert_Machine_Driver.git'
       }
     }
 
