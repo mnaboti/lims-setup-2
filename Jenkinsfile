@@ -33,11 +33,11 @@ pipeline {
         stage('Fetching nlims_controller') {
           steps {
             echo 'Fetching nlims_controller from source code'
-            sh 'echo "compressing iBLIS application" '
+            sh '[ -d "nlims_controller" ] && echo "nlims_controller found, skipping cloning." || git clone https://github.com/HISMalawi/nlims_controller.git'
           }
         }
 
-        stage('Shipping application and setup') {
+        stage('Fetching ') {
           steps {
             echo 'Shipping to facility...'
           }
