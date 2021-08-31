@@ -37,9 +37,9 @@ pipeline {
           }
         }
 
-        stage('Fetching ') {
+        stage('Fetching nlims_data_synchoniser') {
           steps {
-            echo 'Shipping to facility...'
+            echo 'Fetching data syncroniser...'
           }
         }
 
