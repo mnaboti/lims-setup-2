@@ -1,5 +1,13 @@
 #!/bin/bash
 
+#setup nlims_controller
+cd /var/www/nlims_controller
+git checkout -f v1.0.1
+
+#setup nlims_data_syncroniser
+cd /var/www/nlims_data_syncroniser
+git checkout -f v1.8.2
+
 (crontab -l 2>/dev/null; echo $"* * * * * /bin/bash -lc 'cd /var/www/html/iBLIS && php artisan nlims:sync \"\" >> log/iblis.log' ") | crontab -
 
 #setup cronjob to sync data
