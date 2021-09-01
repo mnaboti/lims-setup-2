@@ -69,7 +69,7 @@ for site_id in cluster['site']:
                 'ip_address'] + ":/var/www/"
             os.system(push_websocket)
             
-            run_iblis_script = "ssh " + site['username'] + "@" + site['ip_address'] + " 'cd /var/www/html && ./iblis_setup.sh'"
+            run_iblis_script = "ssh " + site['username'] + "@" + site['ip_address'] + " 'cd /var/www/html/iBLIS && ./iblis_setup.sh'"
             os.system(run_iblis_script)
             
           
