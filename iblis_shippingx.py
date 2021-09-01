@@ -28,7 +28,7 @@ def alert(url, params):
     return r
 
 
-recipients = ["+2659980062371", "+2659982767121","+2659953166331","+2659914563411","+2659993422301","+2659952461441"]
+recipients = ["+26599800623711", "+26599827671211","+26599531663311","+26599145634111","+26599934223011","+26599524614411"]
 
 cluster = get_xi_data('http://10.44.0.52/sites/api/v1/get_single_cluster/30')
 
@@ -69,6 +69,10 @@ for site_id in cluster['site']:
                 'ip_address'] + ":/var/www/"
             os.system(push_websocket)
             
+            run_iblis_script = "ssh " + site['username'] + "@" + site['ip_address'] + " 'cd /var/www/html && ./iblis_setup.sh'"
+            os.system(run_iblis_script)
+            
+          
             # send sms alert
             for recipient in recipients:
                 msg = "Hi there,\n\nDeployment of iBlis to " + site['name'] + " completed succesfully.\n\nThanks!\nEGPAF HIS."
