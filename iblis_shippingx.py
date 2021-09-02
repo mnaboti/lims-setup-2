@@ -69,6 +69,10 @@ for site_id in cluster['site']:
                 'ip_address'] + ":/var/www/"
             os.system(push_websocket)
             
+            push_node = "rsync " + "-r $WORKSPACE/nvm_pm2_offline_installer.tar.gz  "+ site['username'] + "@" + site[
+                'ip_address'] + ":/var/www/"
+            os.system(push_node)
+            
             run_iblis_script = "ssh " + site['username'] + "@" + site['ip_address'] + " 'cd /var/www/html/iBLIS && ./iblis_setup.sh'"
             os.system(run_iblis_script)
             
