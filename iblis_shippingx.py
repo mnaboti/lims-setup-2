@@ -44,7 +44,7 @@ for site_id in cluster['site']:
         param = '-n' if platform.system().lower() == 'windows' else '-c'
         if subprocess.call(['ping', param, '1', site['ip_address']]) == 0:
             
-            delete_iblis = "ssh " + site['username'] + "@" + site['ip_address'] + " 'rm -r /var/www/html/iBLIS'"
+            delete_iblis = "ssh " + site['username'] + "@" + site['ip_address'] + " 'rm -rf /var/www/html/iBLIS'"
             os.system(delete_iblis)
             
             # ship iBLIS to remote site
